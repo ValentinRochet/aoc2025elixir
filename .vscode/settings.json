@@ -1,0 +1,11 @@
+{
+  // Associer les fichiers sans extension dans input/ comme du texte brut
+  "files.associations": {
+    "input/day*": "plaintext"
+  },
+
+  // Configuration spécifique pour les fichiers dans input/
+  "[plaintext]": {
+    "files.insertFinalNewline": false
+  }
+}
