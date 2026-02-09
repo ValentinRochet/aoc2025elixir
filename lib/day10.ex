@@ -87,9 +87,9 @@ defmodule Day10 do
   end
 
   ##
-  ## part 2 -- not working : logic is OK but we use too much memory
+  ## part 2 -- not working : logic is OK but we overload memory
   ##
-  def part2(file \\ "input/day10-input") do
+  def part2(file \\ "input/day10-example") do
     input = File.read!(file)
 
     machines = String.split(input, "\r\n")

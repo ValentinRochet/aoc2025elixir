@@ -57,22 +57,20 @@ defmodule Day8 do
   end
 
   defp join_boxes(circuits, box_1, box_2) do
-    c1 = Enum.find(circuits, fn boxes -> Enum.any?(boxes, fn b -> b == box_1 end) end)
+    c1 = Enum.find(circuits, fn cir -> Enum.any?(cir, fn b -> b == box_1 end) end)
 
-    c2 = Enum.find(circuits, fn boxes -> Enum.any?(boxes, fn b -> b == box_2 end) end)
+    c2 = Enum.find(circuits, fn cir -> Enum.any?(cir, fn b -> b == box_2 end) end)
 
     [Enum.uniq(c1 ++ c2)] ++
-      Enum.reject(circuits, fn boxes ->
-        Enum.any?(boxes, fn b -> b == box_1 or b == box_2 end)
-      end)
+      Enum.reject(circuits, fn cir -> cir == c1 or cir == c2 end)
   end
 
   defp add_new_box_to(circuits, new_box, to_box) do
     circuits
-    |> Enum.reduce([], fn boxes, acc ->
-      case Enum.any?(boxes, fn b -> b == to_box end) do
-        true -> acc ++ [boxes ++ [new_box]]
-        false -> acc ++ [boxes]
+    |> Enum.reduce([], fn cir, acc ->
+      case Enum.any?(cir, fn b -> b == to_box end) do
+        true -> acc ++ [cir ++ [new_box]]
+        false -> acc ++ [cir]
       end
     end)
   end
